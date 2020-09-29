@@ -34,7 +34,7 @@ namespace Person
 
             var cnt = 0;
 
-            var table = new ConsoleTable("Number", "Firstname", "Name  ");
+            var table = new ConsoleTable("Number", "Firstname", "Name");
             foreach (var person in personService.LoadAllPersons()){
 
                 table.AddRow(++cnt, person.FirstName, person.LastName);
