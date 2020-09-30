@@ -1,6 +1,6 @@
 ﻿namespace Person.Model
 {
-    public class Person
+    internal class Person
     {
         private string _fistName;
 
@@ -12,29 +12,13 @@
 
         public string LastName { get; set; }
 
+        public Address Address { get; set; }
+        public int Id { get; set; }
+
         public override string ToString()
         {
-            return $"{FirstName} {LastName}";
+            return $"{Id}: {FirstName} {LastName} {Address}";
         }
 
-
-        //public string GetFistName()
-        //{
-        //    return _fistName;
-        //}
-
-        //internal void SetFirstName(string firstName)
-        //{
-        //    if (firstName == null)
-        //    {
-        //        throw new Exception("Can't be null");
-        //    }
-
-        //    this._fistName = firstName;
-        //}
-
-        //public string FirstName { get; set; }
-
-        //public string LastName { get; set; }
     }
 }

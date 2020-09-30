@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Linq;
 using ConsoleTables;
+using Person.Model;
 using Person.Service;
 
 namespace Person
@@ -12,14 +13,32 @@ namespace Person
     {
         static void Main(string[] args)
         {
-            Model.Person p = new Model.Person();
-            p.FirstName = "Max";
-            p.LastName = "Muster";
+            var p = new Model.Person
+            {
+                FirstName = "Max",
+                LastName = "Muster",
+                Address = new Address
+                {
+                    City = "Wil",
+                    Street = "Bahnhofstrasse",
+                    HouseNumber = "73a",
+                    Zip = "9500"
+                }
+            };
 
-            
-            Model.Person p1 = new Model.Person();
-            p1.FirstName = "Felix";
-            p1.LastName = "Muster";
+
+            var p1 =new Model.Person
+            {
+                FirstName = "Petra",
+                LastName = "Muster",
+                Address = new Address
+                {
+                    City = "St. Gallen",
+                    Street = "Teufener Strasse",
+                    HouseNumber = "5",
+                    Zip = "9000"
+                }
+            };
 
             var personService = new PersonService();
             personService.AddPersonToCollection(p);
@@ -32,25 +51,26 @@ namespace Person
                 Console.WriteLine(person);
             }
 
-            var cnt = 0;
+            //var cnt = 0;
 
-            var table = new ConsoleTable("Number", "Givenname", "Name");
-            foreach (var person in personService.LoadAllPersons()){
+            //var table = new ConsoleTable("Number", "Firstname", "Name");
+            //foreach (var person in personService.LoadAllPersons()){
 
-                table.AddRow(++cnt, person.FirstName, person.LastName);
-            }
+            //    table.AddRow(++cnt, person.FirstName, person.LastName);
+            //}
 
 
-            table.Write();
-            Console.WriteLine();
+            //table.Write();
+            //Console.WriteLine();
 
-            var rows = personService.LoadAllPersons();
+            //var rows = personService.LoadAllPersons();
 
-            ConsoleTable
-                .From<Model.Person>(rows)
-                .Configure(o => o.NumberAlignment = Alignment.Right)
-                .Write(Format.Default);
+            //var x = ConsoleTable
+            //    .From<Model.Person>(rows)
+            //    .Configure(o => o.NumberAlignment = Alignment.Right);
 
+
+            //x.Write(Format.Default);
         }
 
 
